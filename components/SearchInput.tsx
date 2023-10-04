@@ -20,7 +20,7 @@ const SearchInput = () => {
   const inputRef = createRef<HTMLInputElement>();
 
   useEffect(() => {
-    search("keyboard");
+    search("passion");
   }, []);
 
   const onKeyDown = (event: any) => {
