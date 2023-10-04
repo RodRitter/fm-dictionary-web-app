@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col max-w-[777px] px-5 pb-12 m-auto">
       <Loader loading={loading} />
-      <div className="py-[58px] flex justify-between">
+      <div className="py-[50px] flex justify-between">
         <Image src="/img/logo.svg" alt="Logo" width={34} height={38} />
 
         <div className="flex items-center gap-5">
