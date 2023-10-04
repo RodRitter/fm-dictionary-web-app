@@ -13,7 +13,7 @@ import React, {
 } from "react";
 
 const SearchInput = () => {
-  const [word, setWord] = useState("");
+  const [word, setWord] = useState("keyboard");
   const [error, setError] = useState<string | null>(null);
   const { search } = useDictionary();
 
