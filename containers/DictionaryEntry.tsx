@@ -24,7 +24,6 @@ const SectionHeading = ({ children }: SectionHeadingProps) => {
 };
 
 const DictionaryEntry = ({ result }: DictonaryEntryProps) => {
-  console.log(result);
   return (
     <div className="mt-[45px]">
       <div className="flex justify-between items-center">

@@ -45,7 +45,7 @@ const SearchInput = () => {
 
   return (
     <div
-      className={`search-input rounded-[18px] h-[64px] relative p-[1px] ${
+      className={`search-input rounded-[18px] h-[64px] relative p-[1px] mt-2 ${
         error ? "error" : ""
       }`}
     >
