@@ -19,6 +19,10 @@ const SearchInput = () => {
 
   const inputRef = createRef<HTMLInputElement>();
 
+  useEffect(() => {
+    search("keyboard");
+  }, []);
+
   const onKeyDown = (event: any) => {
     if (event?.key && event.key === "Enter") {
       console.log("search for...", word);

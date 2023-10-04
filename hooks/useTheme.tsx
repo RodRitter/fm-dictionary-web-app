@@ -2,14 +2,14 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 export interface ThemeState {
-  theme: "light" | "dark";
+  theme: "light" | "dark" | null;
   setTheme: Function;
 }
 
 const useTheme = create<ThemeState>()(
   persist(
     (set) => ({
-      theme: "light",
+      theme: null,
       setTheme: (theme: "light" | "dark") => set(() => ({ theme })),
     }),
     {

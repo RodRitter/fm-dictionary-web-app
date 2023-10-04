@@ -13,11 +13,19 @@ interface ThemeProviderProps {
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [isClient, setIsClient] = useState(false);
-  const { theme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const { font } = useFont();
 
   useEffect(() => {
     setIsClient(true);
+
+    // If the user hasn't selected a theme yet,
+    // use their system prefers-color-scheme.
+    if (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
   }, []);
 
   return (
