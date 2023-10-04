@@ -1,27 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&family=Lora&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-gray-1: #050505;
+  --color-gray-2: #1f1f1f;
+  --color-gray-3: #2d2d2d;
+  --color-gray-4: #3a3a3a;
+  --color-gray-5: #757575;
+  --color-gray-6: #e9e9e9;
+  --color-gray-7: #f4f4f4;
+  --color-white: #ffffff;
+  --color-primary: #a445ed;
+  --color-error: #ff5252;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+[data-theme="light"] {
+  --main-bg-color: var(--color-white);
+  --main-fg-color: var(--color-gray-3);
+  --switch-bg-color: var(--color-gray-5);
+  --divider-color: var(--color-gray-6);
+  --divider-color: var(--color-gray-6);
+  --line-color: var(--color-gray-6);
+  --modal-bg-color: var(--color-white);
+  --modal-shadow-color: var(--color-gray-6);
+  --search-bg-color: var(--color-gray-7);
+  --search-input-color: var(--color-gray-1);
+  --h1-color: var(--color-gray-3);
+}
+
+[data-theme="dark"] {
+  --main-bg-color: var(--color-gray-1);
+  --main-fg-color: var(--color-white);
+  --switch-bg-color: var(--color-primary);
+  --divider-color: var(--color-white);
+  --line-color: var(--color-gray-4);
+  --modal-bg-color: var(--color-gray-2);
+  --modal-shadow-color: var(--color-primary);
+  --search-bg-color: var(--color-gray-2);
+  --search-input-color: var(--color-white);
+  --h1-color: var(--color-white);
+}
+
+[data-font="sans-serif"] {
+  font-family: "Inter", sans-serif !important;
+}
+
+[data-font="serif"] {
+  font-family: "Lora", serif !important;
+}
+
+[data-font="monospace"] {
+  font-family: "Inconsolata", monospace !important;
+}
+
+.color-primary {
+  color: var(--color-primary);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.color-gray-5 {
+  color: var(--color-gray-5);
+}
+
+.color-error {
+  color: var(--color-error);
+}
+
+h1 {
+  color: var(--h1-color);
+}
+
+h2 {
+  color: var(--color-primary);
+}
+
+h3 {
+  color: var(--color-gray-5);
+}
+
+ul {
+  @apply px-9 my-[30px];
+  margin-left: 1em;
+}
+
+li {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+li::before {
+  color: var(--color-primary) !important;
+  content: "\2022";
+  font-weight: bold;
+  display: inline-block;
+  position: absolute;
+  left: -2em;
+}
+
+.body-content {
+  transition: background-color ease 200ms;
+  background-color: var(--main-bg-color);
+  color: var(--main-fg-color);
+  font-size: 18px;
+}
+
+.theme-switch {
+  transition: background-color ease 200ms;
+  background: var(--switch-bg-color);
+}
+
+.theme-switch:hover {
+  background-color: var(--color-primary);
+}
+
+.theme-switch > div {
+  background: var(--color-white);
+}
+
+.divider {
+  @apply h-full w-[1px];
+  border-right: 1px solid var(--divider-color);
+}
+
+.h-line {
+  @apply h-[1px] w-full;
+  border-top: 1px solid var(--line-color);
+}
+
+.button-link {
+  @apply py-1 w-full text-left;
+  transition: color ease 200ms;
+  display: block;
+}
+
+.button-link:hover {
+  color: var(--color-primary);
+}
+
+.font-modal {
+  @apply shadow-[0_5px_30px_0_var(--modal-shadow-color)];
+  background-color: var(--modal-bg-color);
+  top: 44px;
+  animation: modalOpen ease 300ms;
+}
+
+.font-modal li::before {
+  content: "";
+}
+
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+    top: 36px;
+  }
+  to {
+    opacity: 1;
+    top: 44px;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.search-input {
+  background-color: var(--search-bg-color);
+  color: var(--search-input-color);
+}
+
+.search-input input {
+  outline: none;
+  background: none;
+  border: 1px solid transparent;
+  transition: border-color ease 200ms;
+}
+
+.search-input.error input {
+  border: 1px solid var(--color-error);
+}
+
+.search-input input:hover,
+.search-input input:focus {
+  border-color: var(--color-primary);
+}
+
+.loading-indicator {
+  animation: loading linear 500ms infinite;
+}
+
+@keyframes loading {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100vw;
+  }
 }
